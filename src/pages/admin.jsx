@@ -42,8 +42,8 @@ export default function Admin() {
 
     useEffect(() => {
         getAllUsers()
-    }, [setusers])
-    
+    }, [])
+
     return isAuthorized() && accessRights ?(
         <>
             <div className="container mt-5">
