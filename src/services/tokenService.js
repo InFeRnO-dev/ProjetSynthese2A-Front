@@ -1,4 +1,4 @@
-import { JWTDecode } from "./api/userapi"
+import { JWTDecode } from "./api/admin/userapi"
 import { getInStore, removeInStore, setInStore, TOKEN_KEY } from "./store"
 
 

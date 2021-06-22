@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react'
-import { getAllUser, insertUser } from '../services/api/userapi'
+import Nav from '../components/header/nav'
+import { getAllUser, insertUser } from '../services/api/admin/userapi'
 import UserLine from '../components/admin/userLine'
-import InputLabelLogin from '../components/form/inputLabelLogin'
+import InputLabel from '../components/form/inputLabel'
 import { formHandleChange } from '../services/formService'
 import { isAuthorized, verifyAccessRights } from '../services/userService'
 import { Redirect } from "react-router-dom";
@@ -46,6 +47,7 @@ export default function Admin() {
 
     return isAuthorized() && accessRights ?(
         <>
+            <Nav/>
             <div className="container mt-5">
                 <h1 className="text-center">Admin Route</h1>
                 <div className="row mt-5 border-bottom">
@@ -84,9 +86,9 @@ export default function Admin() {
                                     )
                                 }
                                 
-                                <InputLabelLogin name="email" className="form-control my-3 p-2" value={credentials.email} change={handleChange} type="Email" label="Email" placeholder="mr.dupont@ping-pong.fr" required="true"/>
-                                <InputLabelLogin name="pwd" className="form-control my-3 p-2" value={credentials.pwd} change={handleChange} type="password" label="Mot de passe" placeholder="********" required="true"/>
-                                <InputLabelLogin name="confpwd" className="form-control my-3 p-2" value={credentials.confpwd} change={handleChange} type="password" label="Confirmation du mot de passe" placeholder="********" required="true"/>
+                                <InputLabel name="email" className="form-control my-3 p-2" value={credentials.email} change={handleChange} type="Email" label="Email" placeholder="mr.dupont@ping-pong.fr" required="true"/>
+                                <InputLabel name="pwd" className="form-control my-3 p-2" value={credentials.pwd} change={handleChange} type="password" label="Mot de passe" placeholder="********" required="true"/>
+                                <InputLabel name="confpwd" className="form-control my-3 p-2" value={credentials.confpwd} change={handleChange} type="password" label="Confirmation du mot de passe" placeholder="********" required="true"/>
                             </div>
                             <div className="modal-footer">
                                 <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Annuler</button>

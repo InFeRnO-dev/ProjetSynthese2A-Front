@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
-import InputLabelLogin from '../components/form/inputLabelLogin'
-import { insertUser } from '../services/api/userapi'
+import InputLabel from '../components/form/inputLabel'
+import { insertUser } from '../services/api/admin/userapi'
 import { formHandleChange } from '../services/formService'
 import styles from '../style/login.module.css'
 
@@ -49,9 +49,9 @@ export default function Register(props) {
                                 </div>
                                 )
                             }
-                            <InputLabelLogin name="email" className="form-control my-3 p-2" value={credentials.email} change={handleChange} type="Email" label="Email" placeholder="mr.dupont@ping-pong.fr" required="true"/>
-                            <InputLabelLogin name="pwd" className="form-control my-3 p-2" value={credentials.pwd} change={handleChange} type="password" label="Mot de passe" placeholder="********" required="true"/>
-                            <InputLabelLogin name="confpwd" className="form-control my-3 p-2" value={credentials.confpwd} change={handleChange} type="password" label="Confirmation du mot de passe" placeholder="********" required="true"/>
+                            <InputLabel name="email" className="form-control my-3 p-2" value={credentials.email} change={handleChange} type="Email" label="Email" placeholder="mr.dupont@ping-pong.fr" required="true"/>
+                            <InputLabel name="pwd" className="form-control my-3 p-2" value={credentials.pwd} change={handleChange} type="password" label="Mot de passe" placeholder="********" required="true"/>
+                            <InputLabel name="confpwd" className="form-control my-3 p-2" value={credentials.confpwd} change={handleChange} type="password" label="Confirmation du mot de passe" placeholder="********" required="true"/>
                             <div className="form-row">
                                 <div className="col-lg-7">
                                     <button type="submit" className="btn btn-primary mt-3 w-100">Enregistrer</button>

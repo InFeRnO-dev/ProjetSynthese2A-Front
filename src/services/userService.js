@@ -1,4 +1,4 @@
-import { JWTDecode } from "./api/userapi"
+import { JWTDecode } from "./api/admin/userapi"
 import { removeInStore, TOKEN_KEY } from "./store"
 import { isExpired } from "./tokenService"
 

@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { useHistory } from 'react-router'
-import InputLabelLogin from '../components/form/inputLabelLogin'
-import { getTokenByEmail } from '../services/api/userapi'
+import InputLabel from '../components/form/inputLabel'
+import { getTokenByEmail } from '../services/api/admin/userapi'
 import {formHandleChange} from '../services/formService'
 import { setInStore, TOKEN_KEY } from '../services/store'
 import styles from '../style/login.module.css'
@@ -44,8 +44,8 @@ export default function Login() {
                                     </div>
                                 )
                             }
-                            <InputLabelLogin name="email" className="form-control my-3 p-2" value={login.email} change={handleChange} type="Email" label="Email" placeholder="mr.dupont@ping-pong.fr" required="true"/>
-                            <InputLabelLogin name="pwd" className="form-control my-3 p-2" value={login.pwd} change={handleChange} type="password" label="Mot de passe" placeholder="********" required="true"/>
+                            <InputLabel name="email" className="form-control my-3 p-2" value={login.email} change={handleChange} type="Email" label="Email" placeholder="mr.dupont@ping-pong.fr" required="true"/>
+                            <InputLabel name="pwd" className="form-control my-3 p-2" value={login.pwd} change={handleChange} type="password" label="Mot de passe" placeholder="********" required="true"/>
                             <div className="form-row">
                                 <div className="col-lg-7">
                                     <button type="submit" className="btn btn-primary mt-3 w-100">Connexion</button>

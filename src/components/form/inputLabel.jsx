@@ -1,6 +1,6 @@
 import React from 'react'
 
-export default function InputLabelLogin({type, label, placeholder, value, change, name, className, required}) {
+export default function InputLabel({type, label, placeholder, value, change, name, className, required}) {
     return (
         <div className="form-row">
             <div className="col-lg-7">

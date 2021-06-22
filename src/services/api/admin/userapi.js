@@ -1,5 +1,5 @@
 import axios from "axios";
-import { getInStore, TOKEN_KEY } from '../../services/store'
+import { getInStore, TOKEN_KEY } from '../../../services/store'
 import jwt_decode from "jwt-decode";
 const BASE_URL = "http://localhost:3333/"
 
