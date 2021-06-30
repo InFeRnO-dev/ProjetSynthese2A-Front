@@ -19,8 +19,6 @@ export const verifyAccessRights = (pageRights) => {
         
         for (let j = 0; j < userRights.length; j++) {
             if(pageRights[i] === userRights[j]){
-                console.log("page: " + pageRights[i] + " && user: " + userRights[j])
-                console.log("true")
                 authorized = true
             }
         

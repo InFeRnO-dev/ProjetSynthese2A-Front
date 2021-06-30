@@ -9,13 +9,15 @@ import MachineLine from '../../components/atelier/machineLine';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { insertMachine } from '../../services/api/atelier/machineapi';
+import { isAuthorized, verifyAccessRights } from '../../services/userService';
+import { Redirect } from 'react-router-dom'
 
 
 toast.configure()
 
 export default function Machine() {
-    const PageRights = [1]
-    //const accessRights = verifyAccessRights(PageRights)
+    const PageRights = [5]
+    const accessRights = verifyAccessRights(PageRights)
     const [error, seterror] = useState(false)
     const [credentials, setcredentials] = useState({label: ''})
     const [optionsposte, setoptionsposte] = useState()
@@ -103,7 +105,7 @@ export default function Machine() {
         }
     }
 
-    return (
+    return isAuthorized() && accessRights ?(
         <>
             <Nav/>
             <div className="container">
@@ -175,7 +177,7 @@ export default function Machine() {
                 <div className="modal-dialog">
                     <div className="modal-content">
                         <div className="modal-header">
-                            <h5 className="modal-title" id="addUserModalLabel">Ajouter une machine</h5>
+                            <h5 className="modal-title" id="addMachineModalLabel">Ajouter une machine</h5>
                             <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <form onSubmit={handleSubmitAjouterMachine}>
@@ -220,5 +222,7 @@ export default function Machine() {
 
 
         </>
+    ) : (
+        <Redirect to='/'/>
     )
 }

@@ -4,18 +4,19 @@ import { Multiselect } from 'multiselect-react-dropdown';
 import { getAllPostestravail } from '../../services/api/atelier/postetravailapi';
 import { getAllQualificationByIdPosteTravail, insertQualification } from '../../services/api/atelier/qualificationapi';
 import QualificationLine from '../../components/atelier/qualificationLine';
-import { verifyAccessRights } from '../../services/userService';
+import { isAuthorized, verifyAccessRights } from '../../services/userService';
 import { formHandleChange } from '../../services/formService';
 import InputLabel from '../../components/form/inputLabel';
 import { getUserByEmail } from '../../services/api/admin/userapi';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { Redirect } from 'react-router-dom'
 
 toast.configure()
 
 export default function Qualification() {
-    const PageRights = [1]
-    //const accessRights = verifyAccessRights(PageRights)
+    const PageRights = [5]
+    const accessRights = verifyAccessRights(PageRights)
     const [error, seterror] = useState(false)
     const [credentials, setCredentials] = useState({email: ''})
     const [options, setoptions] = useState([])
@@ -76,7 +77,7 @@ export default function Qualification() {
             seterror(true)
         }
     }
-    return (
+    return isAuthorized() && accessRights ?(
         <>
             <Nav/>
             <div className="container">
@@ -136,5 +137,7 @@ export default function Qualification() {
             </div>
             
         </>
+    ) : (
+        <Redirect to='/'/>
     )
 }
