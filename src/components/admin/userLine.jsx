@@ -86,8 +86,8 @@ export default function UserLine(props) {
 
             </div>
             <div className="col-2 mt-2">
-                <button className="btn btn-warning" data-bs-toggle="modal" data-bs-target={"#editUserModal" + props.index}>Edit</button>
-                <button className="btn btn-danger"data-bs-toggle="modal" data-bs-target={"#deleteUserModal" + props.index}>Delete</button>
+                <button className="btn btn-warning" data-bs-toggle="modal" data-bs-target={"#editUserModal" + props.index}>Modifier</button>
+                <button className="btn btn-danger" data-bs-toggle="modal" data-bs-target={"#deleteUserModal" + props.index}>Supprimer</button>
             </div>
         </div>
 

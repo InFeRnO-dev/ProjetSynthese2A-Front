@@ -3,6 +3,7 @@ import { JWTDecode } from '../../services/api/admin/userapi'
 
 export default function Nav() {
     const userRights = JWTDecode().login.droits
+    
     const getDroitAdmin = (userRights) => {
         let bool = false
         for (let i = 0; i < userRights.length; i++) {
@@ -86,8 +87,10 @@ export default function Nav() {
                                 <ul className="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                                     <li><a className="dropdown-item" href="/atelier/fabrication/machine">Machine</a></li>
                                     <li><a className="dropdown-item" href="/atelier/fabrication/qualification">Qualification</a></li>
+                                    <li><a className="dropdown-item" href="/atelier/gamme">Gamme</a></li>
                                     <li><a className="dropdown-item" href="/atelier/piece">Pièces</a></li>
                                     <li><a className="dropdown-item" href="/atelier/operation">Operation</a></li>
+                                    <li><a className="dropdown-item" href="/atelier/composition">Composition</a></li>
                                     <li><a className="dropdown-item" href="/atelier/realisation">Realisation</a></li>
                                 </ul>
                             </li>

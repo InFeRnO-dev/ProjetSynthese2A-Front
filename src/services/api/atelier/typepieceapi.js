@@ -7,3 +7,9 @@ export async function getAllTypePiece() {
     const result = await axios.get(url)
     return result.data
 }
+
+export async function getAllTypePieceWithoutLivrable() {
+    const url = BASE_URL + "type_piece/wlivrable"
+    const result = await axios.get(url)
+    return result.data
+}

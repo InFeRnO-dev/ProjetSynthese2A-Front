@@ -22,14 +22,19 @@ export const isConnected = () => {
 }
 
 export const isExpired = () => {
-    const tokenexp = JWTDecode().exp
-    const timestamp = parseInt(Date.now().toString().slice(0,-3))
-    if(timestamp < tokenexp) {
-        return false
-    }
-    else {
+    if(getInStore(TOKEN_KEY) !== false){
+        const tokenexp = JWTDecode().exp
+        const timestamp = parseInt(Date.now().toString().slice(0,-3))
+        if(timestamp < tokenexp) {
+            return false
+        }
+        else {
+            return true
+        }
+    }else {
         return true
     }
+    
 }
 
 export const logoff = (context) => {

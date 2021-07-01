@@ -8,6 +8,12 @@ export async function getAllPieces() {
     return result.data
 }
 
+export async function getAllPieceWithoutGamme() {
+    const url = BASE_URL + "piece/gamme"
+    const result = await axios.get(url)
+    return result.data
+}
+
 export async function getAllPieceByType(id_type_piece){
     const url = BASE_URL + "piece/type/" + id_type_piece
     const result = await axios.get(url)

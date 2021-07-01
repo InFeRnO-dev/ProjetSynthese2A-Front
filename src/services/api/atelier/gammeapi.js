@@ -19,3 +19,9 @@ export async function insertGamme(label, id_user, id_piece) {
     const result = await axios.post(url, {label: label, id_user: id_user, id_piece: id_piece})
     return result
 }
+
+export async function updateGamme(id_gamme,label, id_user) {
+    const url = BASE_URL + "gamme/edit"
+    const result = await axios.put(url, {id_gamme: id_gamme, label: label, id_user: id_user})
+    return result
+}

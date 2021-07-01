@@ -18,6 +18,8 @@ import ShowPiece from "./pages/Atelier/showPiece";
 import Home from "./pages/home";
 import Login from "./pages/login";
 import Register from "./pages/register";
+import ShowPieceGamme from "./pages/Atelier/showPieceGamme";
+import ShowComposition from "./pages/Atelier/showcomposition";
 
 function App() {
   return (
@@ -25,12 +27,14 @@ function App() {
       <Switch>
         <Route path="/login" component={Login}/>
         <Route path="/register" component={Register}/>
-        <Route component={Composition} path="/atelier/composition/:id_piece"/>
+        <Route component={ShowComposition} path="/atelier/composition/:id_piece"/>
+        <Route component={Composition} path="/atelier/composition"/>
         <Route component={ShowHistoriqueRealisation} path="/atelier/realisation/historique/:id_realisation"/>
         <Route component={HistoriqueRealisation} path="/atelier/realisation/historique"/>
         <Route component={Realisation} path="/atelier/realisation"/>
         <Route component={Operation} path="/atelier/operation"/>
-        <Route component={Gamme} path="/atelier/gamme/:id_gamme"/>
+        <Route component={Gamme} path="/atelier/gamme"/>
+        <Route component={ShowPieceGamme} path="/atelier/piece/gamme/:id_gamme"/>
         <Route component={ShowPiece} path="/atelier/piece/:id_piece"/>
         <Route component={Piece} path="/atelier/piece"/>
         <Route component={Machine} path="/atelier/fabrication/machine"/>

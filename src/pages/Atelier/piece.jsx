@@ -22,10 +22,7 @@ export default function Piece() {
     const [pieces, setpieces] = useState([])
     const [optionstype, setoptionstype] = useState()
     const [optionsfournisseur, setoptionsfournisseur] = useState()
-    const [fournisseur, setfournisseur] = useState()
-    const [optionsuser, setoptionsuser] = useState()
-    const [user, setuser] = useState()
-    const [gamme, setgamme] = useState({label: ''})
+    const [fournisseur, setfournisseur] = useState(null)
     const [piece, setpiece] = useState({reference: '', label: '', prix_achat: 0, prix_vente: 0 , id_stock_piece: 0})
     const [currenttype, setcurrenttype] = useState()
     
@@ -34,14 +31,9 @@ export default function Piece() {
         setpieces(await getAllPieces())
         setoptionstype(await getAllTypePiece())
         setoptionsfournisseur(await getAllFournisseur())
-        setoptionsuser(await getAllUser())
     }
 
-    const handleChangeGamme = (event) => {
-        formHandleChange(event, gamme, setgamme)
-    }
     const handleChange =  (event) => {
-        console.log(event.currentTarget.value)
         formHandleChange(event, piece, setpiece)
     }
 
@@ -55,8 +47,6 @@ export default function Piece() {
         });
         if(ifexist === false){
             const id_piece = await insertPiece(piece.reference, piece.label, piece.prix_vente, piece.prix_achat, piece.id_stock_piece, currenttype, fournisseur)
-            console.log(id_piece.rows[0])
-            insertGamme(gamme.label,user, id_piece.rows[0].id_piece)
             console.log("submit !")
 
         }else{
@@ -67,11 +57,6 @@ export default function Piece() {
     function onSelectFournisseur(selectedList, selectedItem){
         console.log(selectedItem)
         setfournisseur(selectedItem.id_fournisseur_piece)
-    }
-
-    function onSelectUser(selectedList, selectedItem){
-        console.log(selectedItem)
-        setuser(selectedItem.id_user)
     }
 
     function onSelectType(selectedList, selectedItem){
@@ -140,35 +125,6 @@ export default function Piece() {
                                         <InputLabel name="prix_vente" className="form-control my-3 p-2" value={piece.prix_vente} change={handleChange} type="Number" step="any" label="Prix de vente" placeholder="0.0" required={true} />
                                     </div>
                                 </div>
-                                <div className="row mt-2">
-                                    <div className="col-6">
-                                        Fournisseur :
-                                    </div>
-                                    <div className="col-6">
-                                        <Multiselect
-                                            options={optionsfournisseur}
-                                            singleSelect={true}
-                                            placeholder="fournisseur"
-                                            displayValue="label"
-                                            onSelect={onSelectFournisseur} />
-                                    </div>
-                                </div>
-                                <div className="row mt-2">
-                                    <div className="col-6">
-                                        Responsable de gamme :
-                                    </div>
-                                    <div className="col-6">
-                                        <Multiselect
-                                            options={optionsuser}
-                                            singleSelect={true}
-                                            placeholder="user"
-                                            displayValue="email"
-                                            onSelect={onSelectUser} />
-                                    </div>
-                                </div>
-                                <div className="row mt-2">
-                                    <InputLabel name="label" className="form-control my-3 p-2" value={gamme.label} change={handleChangeGamme} type="Text" label="Nom de la gamme" placeholder="Gamme" required={true} />
-                                </div>
                             </>
                             }
                             {currenttype === 2 &&
@@ -180,35 +136,6 @@ export default function Piece() {
                                     <div className="col-6">
                                         <InputLabel name="label" className="form-control my-3 p-2" value={piece.label} change={handleChange} type="Text" label="label" placeholder="Piece" required={true} />
                                     </div>
-                                </div>
-                                <div className="row mt-2">
-                                    <div className="col-6">
-                                        Fournisseur :
-                                    </div>
-                                    <div className="col-6">
-                                        <Multiselect
-                                            options={optionsfournisseur}
-                                            singleSelect={true}
-                                            placeholder="fournisseur"
-                                            displayValue="label"
-                                            onSelect={onSelectFournisseur} />
-                                    </div>
-                                </div>
-                                <div className="row mt-2">
-                                    <div className="col-6">
-                                        Responsable de gamme :
-                                    </div>
-                                    <div className="col-6">
-                                        <Multiselect
-                                            options={optionsuser}
-                                            singleSelect={true}
-                                            placeholder="user"
-                                            displayValue="email"
-                                            onSelect={onSelectUser} />
-                                    </div>
-                                </div>
-                                <div className="row mt-2">
-                                    <InputLabel name="label" className="form-control my-3 p-2" value={gamme.label} change={handleChangeGamme} type="Text" label="Nom de la gamme" placeholder="Gamme" required={true} />
                                 </div>
                             </>
                             }
